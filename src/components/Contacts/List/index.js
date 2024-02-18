@@ -7,17 +7,18 @@ function List({contacts}) {
   const filteredArray = contacts.filter((item) => Object.keys(item).some((key) => item[key].toString().toLocaleLowerCase().includes(filterText)));
   return (
     <>
-      <div>Contacts List</div><div>
+      <div>
         <div>
           <input name="filter" placeholder="Filter Contacts" onChange={(e) => setFiltered(e.target.value)} />
         </div>
-        <ul>
+        <ul className="list">
           {
             filteredArray.map((item, i) => {
               return <li key={i}>{item.fullname} - {item.phone_number}</li>
             })
           }
         </ul>
+        <p> Total contacts ({filteredArray.length})</p>
       </div>
     </>
   )
